@@ -1,0 +1,15 @@
+@EnableCaching
+informa que o banco de dados é de cache e não banco "convencional"
+
+@Cacheable
+Para armazenar o cache
+no unless você pode colocar regra de negócio para não armazenar query que retorna 0 ou que retorna muitos registros
+evict = limpar o cache (existem várias estratégias) utilizamos o allEntries=true
+
+@Caching(put = { @CachePut(value = "produtoCache", key = "#produto.id") }, evict = {
+			@CacheEvict(value = "allProdutosCache", allEntries = true) })
+put coloca no cache
+
+
+properties do spring para definir o path do restfull
+server.servlet.contextPath=/spring-app
